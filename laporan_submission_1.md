@@ -32,7 +32,7 @@ Solusi yang dapat dilakukan :
 
 ## Data Understanding
 
-Dataset yang digunakan dalam project ini merupakan dataset yang didapatkan melalui platform kaggle dengan jumlah data sebanyak 103904 data dengan memperhatikan 25 features.
+Dataset yang digunakan dalam project ini merupakan dataset yang didapatkan melalui platform kaggle dengan jumlah data sebanyak 103904 data dengan memperhatikan 25 features. Tidak terdapat data null pada dataset.
 
 Sumber data didapatkan dari [Kaggle](https://www.kaggle.com/datasets/deltasierra452/airline-pax-satisfaction-survey)
 
@@ -88,8 +88,56 @@ Arrival Delay in Minutes: Waktu terlambat ketibaan (menit)
 
 Satisfaction: Level kepuasan terhadap maskapai ('satisfied', 'neutral or dissatisfied')
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Melakukan beberapa tahapan yang diperlukan untuk memahami data, contohnya teknik visualisasi data atau exploratory data analysis.
+### Pada tahap data understanding akan dilakukan beberapa tahapan:
+
+#### Data loading
+Proses data loading dilakukan untuk membaca isi data pada datase. Proses dilakukan dengan melakukan proses import library yang dibutuhkan untuk melakukan proses loading data seperti pandas. Kemudian, lakukan proses loading dan cek isi dari data
+
+![image](https://user-images.githubusercontent.com/72394753/188206167-1ff3cd03-78a8-456a-830c-a033f76dc98a.png)
+
+Output kode di atas memberikan informasi sebagai berikut:
+
+Ada 103.904 baris (records atau jumlah pengamatan) dalam dataset.
+
+Terdapat 25 kolom yaitu: SR, id, Gender,	Customer_Type,	Age,	Type_of_Travel,	Class,	Flight_Distance,	Inflight_wifi_service,	Departure/Arrival_time_convenient,
+Ease_of_Online_booking, Gate_location, Food_and_drink, Online_boarding, Seat_comfort, Inflight_entertainment, On-board_service, Leg_room_service, Baggage_handling, Checkin_service, Inflight_service, Cleanliness, Departure_Delay_in_Minutes, Arrival_Delay_in_Minutes, satisfaction                       
+
+#### Exploratory Data Analysis - Deskripsi Variabel
+
+![image](https://user-images.githubusercontent.com/72394753/188209292-a67341ea-1a2c-485a-ae62-52b65b2be494.png)
+
+Dari output terlihat bahwa:
+
+Terdapat 5 kolom dengan tipe object, yaitu: Gender,	Customer_Type,	Type_of_Travel,	Class, satisfaction (target fitur)
+
+Terdapat 19 kolom numerik dengan tipe data int64 yaitu: SR, id,	Age,	Flight_Distance,	Inflight_wifi_service,	Departure/Arrival_time_convenient,
+Ease_of_Online_booking, Gate_location, Food_and_drink, Online_boarding, Seat_comfort, Inflight_entertainment, On-board_service, Leg_room_service, Baggage_handling, Checkin_service, Inflight_service, Cleanliness, Departure_Delay_in_Minutes
+
+Terdapat 1 kolom numerik dengan tipe data float64, yaitu: Arrival_Delay_in_Minutes
+
+Gunakan fungsi `describe()` untuk mendapatkan informasi statistik pada masing-masing kolom
+
+#### Exploratory Data Analysis - Menangani Missing Value dan Outliers
+
+##### Missing Value
+Tidak terdapat missing value pada dataset
+
+##### Outliers
+
+![image](https://user-images.githubusercontent.com/72394753/188210330-c39a9ef3-3f26-43a4-ad16-c1eab70ea0fa.png)
+![image](https://user-images.githubusercontent.com/72394753/188210409-b4a1ad04-35cf-46ac-93c5-0457c210bd8d.png)
+![image](https://user-images.githubusercontent.com/72394753/188210458-4ac22747-d5a0-493a-8a7a-3345c8100a0f.png)
+
+Pada boxplot, terlihat terdapat outlier pada feature Flight_distance, Departure_Delay_in_Minutes, dan Arrival_Delay_in_Minutes. Outlier tersebut dapat diabaikan, karena sangat memungkinkan untuk memberikan informasi baru terkait data. 
+
+Selain itu, delay pesawat dalam waktu yang cukup lama dari biasanya merupakan hal yang memungkinkan terjadinya keterlambatan dalam penerbangan pesawat dan ketibaan pesawat.
+
+Outlier pada checkin service sendiri sangat memungkinkan terjadi jika penumpang melakukan proses self check in sebelum hari keberangkatan.
+
+#### Exploratory Data Analysis - Univariate Analysis
+
+#### Exploratory Data Analysis - Multivariate Analysis
+
 
 ## Data Preparation
 Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
