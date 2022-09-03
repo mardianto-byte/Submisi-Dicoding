@@ -120,31 +120,79 @@ Gunakan fungsi `describe()` untuk mendapatkan informasi statistik pada masing-ma
 #### Exploratory Data Analysis - Menangani Missing Value dan Outliers
 
 ##### Missing Value
-Tidak terdapat missing value pada dataset
+Tidak terdapat missing value pada dataset, namun dijelaskan bahwa pada survey, nilai 0 merupakan nilai yang tidak applicable sehingga data survey dengan nilai 0 perlu dihilangkan 
+![image](https://user-images.githubusercontent.com/72394753/188282876-97994e4b-7144-4e03-a32a-89eff66221a8.png)
+
 
 ##### Outliers
 
 ![image](https://user-images.githubusercontent.com/72394753/188210330-c39a9ef3-3f26-43a4-ad16-c1eab70ea0fa.png)
-![image](https://user-images.githubusercontent.com/72394753/188210409-b4a1ad04-35cf-46ac-93c5-0457c210bd8d.png)
 ![image](https://user-images.githubusercontent.com/72394753/188210458-4ac22747-d5a0-493a-8a7a-3345c8100a0f.png)
 
-Pada boxplot, terlihat terdapat outlier pada feature Flight_distance, Departure_Delay_in_Minutes, dan Arrival_Delay_in_Minutes. Outlier tersebut dapat diabaikan, karena sangat memungkinkan untuk memberikan informasi baru terkait data. 
+Pada boxplot, terlihat terdapat outlier pada feature Flight_distance, Departure_Delay_in_Minutes, dan Arrival_Delay_in_Minutes.
 
-Selain itu, delay pesawat dalam waktu yang cukup lama dari biasanya merupakan hal yang memungkinkan terjadinya keterlambatan dalam penerbangan pesawat dan ketibaan pesawat.
-
-Outlier pada checkin service sendiri sangat memungkinkan terjadi jika penumpang melakukan proses self check in sebelum hari keberangkatan.
+Outlier tersebut perlu diperhatikan, karena sangat memungkinkan untuk memberikan informasi baru terkait data. Selain itu, delay pada pesawat merupakan hal yang memungkinkan terjadinya keterlambatan dalam penerbangan pesawat dan ketibaan pesawat dalam waktu yang lama. 
 
 #### Exploratory Data Analysis - Univariate Analysis
+Lakukan proses analisa feature kategorik dengan melakukan proses visualisasi dengan diagram batang.
+
+Terdapat beberapa point yang dapat diambil : 
+
+1. Distribusi gender laki - laki dan perempuan yang mengisi survey cukup merata
+2. Sebagian besar pengisi survey adalah loyal customer
+3. Sebagian besar tujuan travel penumpang adalah untuk urusan bisnis
+4. Kelas bisnis merupakan kelas yang paling banyak dipilih diikuti kelas eco dan eco plus
+5. Kebersihan, Layanan maskapai, layanan Check in, Penanganan bagasi, Ruang kaki pada pesawat, 
+pelayanan selama penerbangan, hiburan, kenyamanan kursi, ketepatan waktu sampai dan berangkat
+ maskapai memiliki rating cukup baik.
+6. Online boarding,makanan dan minuman, lokasi gate, kemudahan online booking, layanan wifi selama penerbangan
+memiliki rating yang kurang baik.
+7. Secara umum, penumpang tidak merasa puas/ netral terhadap layanan maskapai
 
 #### Exploratory Data Analysis - Multivariate Analysis
-
+Untuk mencari korelasi antar feature, manfaatkan visualisasi heatmap. Dalam proses visualisasi heatmap, nilai target satisfaction memiliki korelasi positif yang cukup erat terhadap Online_boarding dan inflight_entertaiment. Selain itu, dipilih juga feature lainnya yang memiliki korelasi cukup erat terhadap 2 feature tersebut yaitu inflight_wifi_service dan cleanliness untuk menghidari teradinya overfitting terhadap 2 feature dikarena reduksi yang cukup signifikan.
 
 ## Data Preparation
 Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan proses data preparation yang dilakukan
-- Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
+
+### Reduksi Feature
+Proses reduksi feature dilakukan untuk mengurangi jumlah fitur yang digunakan dalam parameter namun tetap mendapatkan sebagian informasi yang dibutuhkan. Dengan demikian, proses training dapat dilakukan lebih cepat dan efisien karena feature yang diproses telah mencakup sebagian besar informasi. Selain itu, hal ini dapat dilakukan untuk menghindari terjadinya kasus overfitting. 
+
+Feature yang akan direduksi meliputi ffeature lainnya selain feature yang telah dipertimbangkan pada multivariate analysis. Proses update dapat dilakukan dengan membuang kolom yang tidak digunakan dan tetap menyimpan feature yang dibutuhkan pada dataset.
+
+`
+updated_dataset = dataset.drop(['id', 'Food_and_drink', 'Seat_comfort', 'On-board_service', 'Leg_room_service', 'Baggage_handling', 'Checkin_service', 'Inflight_service', 'Age', 'Departure/Arrival_time_convenient', 'Ease_of_Online_booking', 'Flight_Distance', 'Departure_Delay_in_Minutes', 'Arrival_Delay_in_Minutes', 'Gate_location', 'Departure/Arrival_time_convenient'], axis=1)
+`
+
+### Category feature encoding
+Melakukan proses one-hot encoding terhadap categorical feature. Hal ini dilakukan agar model dapat mengetahui nilai dari feature tersebut sehingga bisa mendapatkan informasi yang dibutuhkan atau berguna.
+
+`
+from sklearn.preprocessing import  OneHotEncoder
+updated_dataset = pd.concat([updated_dataset, pd.get_dummies(updated_dataset['Gender'], prefix='Gender')],axis=1)
+updated_dataset = pd.concat([updated_dataset, pd.get_dummies(updated_dataset['Customer_Type'], prefix='Customer_Type')],axis=1)
+updated_dataset = pd.concat([updated_dataset, pd.get_dummies(updated_dataset['Type_of_Travel'], prefix='Type_of_Travel')],axis=1)
+updated_dataset = pd.concat([updated_dataset, pd.get_dummies(updated_dataset['Class'], prefix='Class')],axis=1)
+updated_dataset.drop(['Gender','Customer_Type','Type_of_Travel', 'Class'], axis=1, inplace=True)
+updated_dataset.head()
+`
+
+### Train-Test-Split
+Proses membagi data menjadi data latih dan data uji sangat berguna untuk mengevaluasi seberapa baik model kita dalam melakukan proses prediksi jika diberikan sebuah data baru diluar data latih. Dengan demikian, jika terjadi oerfit dapat diketahui dengan cepat dan proses optimalisasi dapat dilakukan sedini mungkin.
+
+`
+from sklearn.model_selection import train_test_split
+X = updated_dataset.drop(["satisfied"],axis =1)
+y = updated_dataset["satisfied"]
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.1, random_state = 123)
+`
+
+Total # of sample in whole dataset: 95711
+Total # of sample in train dataset: 86139
+Total # of sample in test dataset: 9572
+
+pada data test cukup menggunakan 10% data dari keseluruhan dataset saja dikarenakan jumlah data yng cukup besar pada dataset dan 10% dari dataset memiliki jumlah yang cukup sebagai data uji.
 
 ## Modeling
 Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
@@ -167,7 +215,3 @@ Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, probl
 - Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
 
 **---Ini adalah bagian akhir laporan---**
-
-_Catatan:_
-- _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
-- Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.
