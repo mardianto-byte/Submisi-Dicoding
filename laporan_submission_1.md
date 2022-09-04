@@ -30,13 +30,43 @@ Solusi yang dapat dilakukan :
 - Memanfaatkan model SVM sebagai perbandingan terhadap model uji lain dengan Metrik evaluasi yang digunakan yaitu metrik accuracy.
 - Memanfaatkan model Decision Tree sebagai perbandingan terhadap model uji lain dengan Metrik evaluasi yang digunakan yaitu metrik accuracy.
 
+
 ## Data Understanding
 
 Dataset yang digunakan dalam project ini merupakan dataset yang didapatkan melalui platform kaggle dengan jumlah data sebanyak 103904 data dengan memperhatikan 25 features. Tidak terdapat data null pada dataset.
 
 Sumber data didapatkan dari [Kaggle](https://www.kaggle.com/datasets/deltasierra452/airline-pax-satisfaction-survey)
 
-### Variabel-variabel pada Airline Passanger Satisfaction dataset adalah sebagai berikut:
+### Pada tahap data understanding akan dilakukan beberapa tahapan:
+
+#### Data loading
+Proses data loading dilakukan untuk membaca isi data pada datase. Proses dilakukan dengan melakukan proses import library yang dibutuhkan untuk melakukan proses loading data seperti pandas. Kemudian, lakukan proses loading dan cek isi dari data
+
+![image](https://user-images.githubusercontent.com/72394753/188206167-1ff3cd03-78a8-456a-830c-a033f76dc98a.png)
+
+Output kode di atas memberikan informasi sebagai berikut:
+
+Ada 103.904 baris (records atau jumlah pengamatan) dalam dataset.
+
+Terdapat 25 kolom yaitu: SR, id, Gender,	Customer_Type,	Age,	Type_of_Travel,	Class,	Flight_Distance,	Inflight_wifi_service,	Departure/Arrival_time_convenient,
+Ease_of_Online_booking, Gate_location, Food_and_drink, Online_boarding, Seat_comfort, Inflight_entertainment, On-board_service, Leg_room_service, Baggage_handling, Checkin_service, Inflight_service, Cleanliness, Departure_Delay_in_Minutes, Arrival_Delay_in_Minutes, satisfaction                       
+
+#### Exploratory Data Analysis - Deskripsi Variabel
+
+![image](https://user-images.githubusercontent.com/72394753/188209292-a67341ea-1a2c-485a-ae62-52b65b2be494.png)
+
+Dari output terlihat bahwa:
+
+Terdapat 5 kolom dengan tipe object, yaitu: Gender,	Customer_Type,	Type_of_Travel,	Class, satisfaction (target fitur)
+
+Terdapat 19 kolom numerik dengan tipe data int64 yaitu: SR, id,	Age,	Flight_Distance,	Inflight_wifi_service,	Departure/Arrival_time_convenient,
+Ease_of_Online_booking, Gate_location, Food_and_drink, Online_boarding, Seat_comfort, Inflight_entertainment, On-board_service, Leg_room_service, Baggage_handling, Checkin_service, Inflight_service, Cleanliness, Departure_Delay_in_Minutes
+
+Terdapat 1 kolom numerik dengan tipe data float64, yaitu: Arrival_Delay_in_Minutes
+
+Gunakan fungsi `describe()` untuk mendapatkan informasi statistik pada masing-masing kolom
+
+##### Variabel-variabel pada Airline Passanger Satisfaction dataset adalah sebagai berikut:
 
 Id: nomor Id penumpang
 
@@ -88,34 +118,6 @@ Arrival Delay in Minutes: Waktu terlambat ketibaan (menit)
 
 Satisfaction: Level kepuasan terhadap maskapai ('satisfied', 'neutral or dissatisfied')
 
-### Pada tahap data understanding akan dilakukan beberapa tahapan:
-
-#### Data loading
-Proses data loading dilakukan untuk membaca isi data pada datase. Proses dilakukan dengan melakukan proses import library yang dibutuhkan untuk melakukan proses loading data seperti pandas. Kemudian, lakukan proses loading dan cek isi dari data
-
-![image](https://user-images.githubusercontent.com/72394753/188206167-1ff3cd03-78a8-456a-830c-a033f76dc98a.png)
-
-Output kode di atas memberikan informasi sebagai berikut:
-
-Ada 103.904 baris (records atau jumlah pengamatan) dalam dataset.
-
-Terdapat 25 kolom yaitu: SR, id, Gender,	Customer_Type,	Age,	Type_of_Travel,	Class,	Flight_Distance,	Inflight_wifi_service,	Departure/Arrival_time_convenient,
-Ease_of_Online_booking, Gate_location, Food_and_drink, Online_boarding, Seat_comfort, Inflight_entertainment, On-board_service, Leg_room_service, Baggage_handling, Checkin_service, Inflight_service, Cleanliness, Departure_Delay_in_Minutes, Arrival_Delay_in_Minutes, satisfaction                       
-
-#### Exploratory Data Analysis - Deskripsi Variabel
-
-![image](https://user-images.githubusercontent.com/72394753/188209292-a67341ea-1a2c-485a-ae62-52b65b2be494.png)
-
-Dari output terlihat bahwa:
-
-Terdapat 5 kolom dengan tipe object, yaitu: Gender,	Customer_Type,	Type_of_Travel,	Class, satisfaction (target fitur)
-
-Terdapat 19 kolom numerik dengan tipe data int64 yaitu: SR, id,	Age,	Flight_Distance,	Inflight_wifi_service,	Departure/Arrival_time_convenient,
-Ease_of_Online_booking, Gate_location, Food_and_drink, Online_boarding, Seat_comfort, Inflight_entertainment, On-board_service, Leg_room_service, Baggage_handling, Checkin_service, Inflight_service, Cleanliness, Departure_Delay_in_Minutes
-
-Terdapat 1 kolom numerik dengan tipe data float64, yaitu: Arrival_Delay_in_Minutes
-
-Gunakan fungsi `describe()` untuk mendapatkan informasi statistik pada masing-masing kolom
 
 #### Exploratory Data Analysis - Menangani Missing Value dan Outliers
 
@@ -135,6 +137,8 @@ Outlier tersebut perlu diperhatikan, karena sangat memungkinkan untuk memberikan
 
 #### Exploratory Data Analysis - Univariate Analysis
 Lakukan proses analisa feature kategorik dengan melakukan proses visualisasi dengan diagram batang.
+![image](https://user-images.githubusercontent.com/72394753/188304039-af91cc3c-0047-4027-8056-dd17a5b457ee.png)
+![image](https://user-images.githubusercontent.com/72394753/188304058-3f2aef64-34f8-435b-8603-c25116f85b6a.png)
 
 Terdapat beberapa point yang dapat diambil : 
 
@@ -151,6 +155,8 @@ memiliki rating yang kurang baik.
 
 #### Exploratory Data Analysis - Multivariate Analysis
 Untuk mencari korelasi antar feature, manfaatkan visualisasi heatmap. Dalam proses visualisasi heatmap, nilai target satisfaction memiliki korelasi positif yang cukup erat terhadap Online_boarding dan inflight_entertaiment. Selain itu, dipilih juga feature lainnya yang memiliki korelasi cukup erat terhadap 2 feature tersebut yaitu inflight_wifi_service dan cleanliness untuk menghidari teradinya overfitting terhadap 2 feature dikarena reduksi yang cukup signifikan.
+
+![image](https://user-images.githubusercontent.com/72394753/188304087-2f871929-97dc-421b-95e8-e6122107c255.png)
 
 ## Data Preparation
 
