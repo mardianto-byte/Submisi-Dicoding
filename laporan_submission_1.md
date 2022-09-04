@@ -153,65 +153,76 @@ memiliki rating yang kurang baik.
 Untuk mencari korelasi antar feature, manfaatkan visualisasi heatmap. Dalam proses visualisasi heatmap, nilai target satisfaction memiliki korelasi positif yang cukup erat terhadap Online_boarding dan inflight_entertaiment. Selain itu, dipilih juga feature lainnya yang memiliki korelasi cukup erat terhadap 2 feature tersebut yaitu inflight_wifi_service dan cleanliness untuk menghidari teradinya overfitting terhadap 2 feature dikarena reduksi yang cukup signifikan.
 
 ## Data Preparation
-Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
-
 
 ### Reduksi Feature
 Proses reduksi feature dilakukan untuk mengurangi jumlah fitur yang digunakan dalam parameter namun tetap mendapatkan sebagian informasi yang dibutuhkan. Dengan demikian, proses training dapat dilakukan lebih cepat dan efisien karena feature yang diproses telah mencakup sebagian besar informasi. Selain itu, hal ini dapat dilakukan untuk menghindari terjadinya kasus overfitting. 
 
 Feature yang akan direduksi meliputi ffeature lainnya selain feature yang telah dipertimbangkan pada multivariate analysis. Proses update dapat dilakukan dengan membuang kolom yang tidak digunakan dan tetap menyimpan feature yang dibutuhkan pada dataset.
 
-`
-updated_dataset = dataset.drop(['id', 'Food_and_drink', 'Seat_comfort', 'On-board_service', 'Leg_room_service', 'Baggage_handling', 'Checkin_service', 'Inflight_service', 'Age', 'Departure/Arrival_time_convenient', 'Ease_of_Online_booking', 'Flight_Distance', 'Departure_Delay_in_Minutes', 'Arrival_Delay_in_Minutes', 'Gate_location', 'Departure/Arrival_time_convenient'], axis=1)
-`
+![image](https://user-images.githubusercontent.com/72394753/188301162-389d9cde-ceff-4f75-a805-b5a58e4d2626.png)
 
 ### Category feature encoding
 Melakukan proses one-hot encoding terhadap categorical feature. Hal ini dilakukan agar model dapat mengetahui nilai dari feature tersebut sehingga bisa mendapatkan informasi yang dibutuhkan atau berguna.
 
-`
-from sklearn.preprocessing import  OneHotEncoder
-updated_dataset = pd.concat([updated_dataset, pd.get_dummies(updated_dataset['Gender'], prefix='Gender')],axis=1)
-updated_dataset = pd.concat([updated_dataset, pd.get_dummies(updated_dataset['Customer_Type'], prefix='Customer_Type')],axis=1)
-updated_dataset = pd.concat([updated_dataset, pd.get_dummies(updated_dataset['Type_of_Travel'], prefix='Type_of_Travel')],axis=1)
-updated_dataset = pd.concat([updated_dataset, pd.get_dummies(updated_dataset['Class'], prefix='Class')],axis=1)
-updated_dataset.drop(['Gender','Customer_Type','Type_of_Travel', 'Class'], axis=1, inplace=True)
-updated_dataset.head()
-`
+![image](https://user-images.githubusercontent.com/72394753/188301186-94b3871f-a71e-4c8f-b341-2fb6ae5d123d.png)
 
 ### Train-Test-Split
 Proses membagi data menjadi data latih dan data uji sangat berguna untuk mengevaluasi seberapa baik model kita dalam melakukan proses prediksi jika diberikan sebuah data baru diluar data latih. Dengan demikian, jika terjadi oerfit dapat diketahui dengan cepat dan proses optimalisasi dapat dilakukan sedini mungkin.
 
-`
-from sklearn.model_selection import train_test_split
-X = updated_dataset.drop(["satisfied"],axis =1)
-y = updated_dataset["satisfied"]
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.1, random_state = 123)
-`
-
-Total # of sample in whole dataset: 95711
-Total # of sample in train dataset: 86139
-Total # of sample in test dataset: 9572
+![image](https://user-images.githubusercontent.com/72394753/188301202-8a12d0ce-5b32-4cc3-be87-20fe9c4ada0a.png)
 
 pada data test cukup menggunakan 10% data dari keseluruhan dataset saja dikarenakan jumlah data yng cukup besar pada dataset dan 10% dari dataset memiliki jumlah yang cukup sebagai data uji.
 
 ## Modeling
-Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan kelebihan dan kekurangan dari setiap algoritma yang digunakan.
-- Jika menggunakan satu algoritma pada solution statement, lakukan proses improvement terhadap model dengan hyperparameter tuning. **Jelaskan proses improvement yang dilakukan**.
-- Jika menggunakan dua atau lebih algoritma pada solution statement, maka pilih model terbaik sebagai solusi. **Jelaskan mengapa memilih model tersebut sebagai model terbaik**.
+Pada model development, akan dilakukan percobaan pada 3 model yaitu : 
+- KNN
+- SVM
+- Decision Tree
+
+### KNN
+![image](https://user-images.githubusercontent.com/72394753/188301902-42161d83-2687-43de-b24f-4b4f83a75a0e.png)
+
+Akan dilakukan proses import library yang dibutuhkan. Kemudian, inisiasi KNeighborsClassifier dengan parameter n_neighbors=10 dan p=2, 
+dimana n_neighbors merupakan parameter yang digunakan untuk menentukan jumlah point tetangga yang dibutuhkan dalam proses klasifikasi. Dalam menentukan jarak, metric yang digunakan adalah metric minowski (p=2). Lakukan proses latih pada data train dan proses uji pada data test. 
+
+Kelebihan model KNN:
+- Model KNN akan memiliki performa yang baik karena periode training. 
+- Selain itu, KNN juga mudah untuk diimplementasi
+
+Kelemahan model KNN:
+- Mode KNN krang efektif jika dijalankan pada big dataset karena perlu menghitung jarak tiap point
+- Kurang efektif pada data dengan dimensi tinggi
+
+### SVM
+![image](https://user-images.githubusercontent.com/72394753/188301346-97fc5ad5-24da-4f92-8b72-cc248edc6aff.png)
+
+Akan dilakukan proses import library yang dibutuhkan. Kemudian, inisiasi SVC dengan parameter kernel='linear' dan random_state=0, 
+dimana kernel merupakan parameter yang digunakan untuk mendapat data dan melakukan transformasi kedalam bentuk tertentu untuk dilakukan processing data. Linear merupakan parameter jika data dapat dipisahkan dengan memanfaatkan 1 garis. Random_state = 0 dipilih agar saat mengenerate data, maka data akan dilakukan secara acak. Lakukan proses latih pada data train dan proses uji pada data test. 
+
+Kelebihan model SVM:
+- Model SVM akan memiliki performa yang baik pada dimensi tinggi. 
+- Selain itu, SVM juga cukup efisien dan outlier tidak memberikan dampak signifikan terhadap hasil 
+
+Kelemahan model SVM:
+- Mode SVM cukup lambat jika dijalankan pada big dataset
+
+### Decision Tree
+![image](https://user-images.githubusercontent.com/72394753/188301366-94e24bc7-c43b-42c6-a9fb-987325d3ec6a.png)
+
+Akan dilakukan proses import library yang dibutuhkan. Kemudian, inisiasi DecisionTreeClassifier dengan parameter criterion='entropy', random_state=0, 
+dimana criterion merupakan parameter yang digunakan untuk mengukur kualitas pemisahan.Teknik yang dipilih adalah entropy. Random_state = 0 dipilih agar saat mengenerate data, maka data akan dilakukan secara acak. Lakukan proses latih pada data train dan proses uji pada data test. 
+
+Kelebihan model Decision Tree:
+- Model Decision Tree memiliki automatic feature selection dimana metode decision tree sendiri memiliki tree-like model dalam menentukan keputusan dalam memberikan label berdasarkan pada pernyataan conditional. 
+
+Kelemahan model Decision Tree:
+- Mode Decision Tree cukup lambat jika dijalankan pada big dataset serta cenderung untuk terjadi overfit
+
+Model terbaik yang akan digunakan adalah model decision tree. Model decision tree diilih karena model tersebut memiliki tingkat akurasi yang lebih tinggi dibandingkan dengan model lainnya yang diamati.
+
 
 ## Evaluation
-Pada bagian ini anda perlu menyebutkan metrik evaluasi yang digunakan. Lalu anda perlu menjelaskan hasil proyek berdasarkan metrik evaluasi yang digunakan.
+Metrik yang digunakan pada kasus ini adalah metrik Akurasi. Metrik akurasi memiliki rumus (TP + TN) / (TP + FP + TN + FP). Metrik akurasi dipilih karena akan dilakukan prediksi terhadap kelas dan kedua kelas (satisfied, neutra/not satisfied) merupakan hal yang penting untuk diperhatikan sehingga akan memperhitungkan setiap true positive dan true negative terhadap keseluruhan prediksi. 
 
-Sebagai contoh, Anda memiih kasus klasifikasi dan menggunakan metrik **akurasi, precision, recall, dan F1 score**. Jelaskan mengenai beberapa hal berikut:
-- Penjelasan mengenai metrik yang digunakan
-- Menjelaskan hasil proyek berdasarkan metrik evaluasi
-
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
-
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
-
-**---Ini adalah bagian akhir laporan---**
+Dalam membandingkan metrik akurasi tiap model, didapatkan bahwa model KNN memiliki akurasi sebesar 0.931, model SVM memilikiakurasi sebesar 0.878, dan model Decision tree memiliki akurasi sebesar 0.94. Jika dilihat, model KNN dan model decision tree memiliki tingkat akurasi yang hampir serupa. Namun, decision tree memiliki tingkat akurasi sedikit lebih baik dibandingkan model lainnya.
