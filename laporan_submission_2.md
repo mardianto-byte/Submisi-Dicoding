@@ -2,7 +2,9 @@
 
 ## Project Overview
 
-Pada bagian ini, Kamu perlu menuliskan latar belakang yang relevan dengan proyek yang diangkat.
+`Education is the most powerful weapon which you can use to change the world - Nelson Mandela`  
+  
+  Quote tersebut menyatakan bahwa pendidikan merupakan hal yang penting untuk setiap individu. Dengan pendidikan, setiap individu akan membuka jendela pengetahuan baru yang dimiliki. Dalam pendidikan, tidak setiap orang memiliki kesempatan untuk dapat merasakan pendidikan secara formal untuk mengasah keahlian yang dimiliki. Namun, keterbatasan akses tidak akan menjadi penghalang bagi setiap individu dalam memiliki kebebasan pendidikan. Dalam dunia digital saat ini, pendidikan bisa didapatkan dari berbagai sumber, salah satunya kursus online. Pada penelitian, menyatakan bahwa tidak terdapat perbedaa signifikan dalam rasio lulus-gagal yang mengindikasikan bahwa kursus online juga memberikan penilaian secara selektif dan efektif terhadap kelulusan. Temuan menarik lainnya adalah kursus online dapat mengurangi gap prestasi siswa. Spekulasi menyatakan bahwa dengan anonimitas, siswa yang kurang terlayani lebih dapat mencapai potensinya tanpa adanya stereotip [2]. Pada penemuan di penelitian lain, didapatkan bahwa Siswa menyukai video pembelajaran berdurasi pendek untuk menjaga konsentrasi siswa dan dengan memanfaatkan kursus online berbasis video pembelajaran, siswa dapat mengatur kecepatan video sesuai dengan kebutuhan [1]. Dengan kemudahan dan berbagai keuntungan tersebut, pembelajaran online dapat menjadi salah satu alternatif setiap orang untuk mengeksplor pembelajaran yang diinginkan. Namun, prefernsi materi yang ingin dipelajari menjadi hal menarik untuk dibahas agar pengguna dapat memanfaatkan pembelajaran yang diterima secara efektif serta mengkombinasikannya dengan pegetahuan yang dimiliki.       
 
 **Rubrik/Kriteria Tambahan (Opsional)**:
 - Jelaskan mengapa proyek ini penting untuk diselesaikan.
@@ -73,8 +75,8 @@ Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, probl
 **Rubrik/Kriteria Tambahan (Opsional)**: 
 - Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
 
-**---Ini adalah bagian akhir laporan---**
+## Referensi
 
-_Catatan:_
-- _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
-- Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.
+[1] N. Mamgain, A. Sharma and P. Goyal, "Learner's perspective on video-viewing features offered by MOOC providers: Coursera and edX," 2014 IEEE International Conference on MOOC, Innovation and Technology in Education (MITE), 2014, pp. 331-336, doi: 10.1109/MITE.2014.7020298.
+
+[2] F. Zabihian, "Achievement gap in online and hybrid courses versus face-to-face courses among engineering and computer science students," 2018 IEEE Frontiers in Education Conference (FIE), 2018, pp. 1-5, doi: 10.1109/FIE.2018.8658579.
