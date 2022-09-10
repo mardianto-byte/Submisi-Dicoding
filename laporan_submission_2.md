@@ -4,13 +4,7 @@
 
 `Education is the most powerful weapon which you can use to change the world - Nelson Mandela`  
   
-  Quote tersebut menyatakan bahwa pendidikan merupakan hal yang penting untuk setiap individu. Dengan pendidikan, setiap individu akan membuka jendela pengetahuan baru yang dimiliki. Dalam pendidikan, tidak setiap orang memiliki kesempatan untuk dapat merasakan pendidikan secara formal untuk mengasah keahlian yang dimiliki. Namun, keterbatasan akses tidak akan menjadi penghalang bagi setiap individu dalam memiliki kebebasan pendidikan. Dalam dunia digital saat ini, pendidikan bisa didapatkan dari berbagai sumber, salah satunya kursus online. Pada penelitian, menyatakan bahwa tidak terdapat perbedaa signifikan dalam rasio lulus-gagal yang mengindikasikan bahwa kursus online juga memberikan penilaian secara selektif dan efektif terhadap kelulusan. Temuan menarik lainnya adalah kursus online dapat mengurangi gap prestasi siswa. Spekulasi menyatakan bahwa dengan anonimitas, siswa yang kurang terlayani lebih dapat mencapai potensinya tanpa adanya stereotip [2]. Pada penemuan di penelitian lain, didapatkan bahwa Siswa menyukai video pembelajaran berdurasi pendek untuk menjaga konsentrasi siswa dan dengan memanfaatkan kursus online berbasis video pembelajaran, siswa dapat mengatur kecepatan video sesuai dengan kebutuhan [1]. Dengan kemudahan dan berbagai keuntungan tersebut, pembelajaran online dapat menjadi salah satu alternatif setiap orang untuk mengeksplor pembelajaran yang diinginkan. Namun, prefernsi materi yang ingin dipelajari menjadi hal menarik untuk dibahas agar pengguna dapat memanfaatkan pembelajaran yang diterima secara efektif serta mengkombinasikannya dengan pegetahuan yang dimiliki.       
-
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Jelaskan mengapa proyek ini penting untuk diselesaikan.
-- Menyertakan hasil riset terkait atau referensi. Referensi yang diberikan harus berasal dari sumber yang kredibel dan author yang jelas.
-  
-  Format Referensi: [Judul Referensi](https://scholar.google.com/) 
+  Quote tersebut menyatakan bahwa pendidikan merupakan hal yang penting untuk setiap individu. Dengan pendidikan, setiap individu akan membuka jendela pengetahuan baru yang dimiliki. Dalam pendidikan, tidak setiap orang memiliki kesempatan untuk dapat merasakan pendidikan secara formal untuk mengasah keahlian yang dimiliki. Namun, keterbatasan akses tidak akan menjadi penghalang bagi setiap individu dalam memiliki kebebasan pendidikan. Dalam dunia digital saat ini, pendidikan bisa didapatkan dari berbagai sumber, salah satunya kursus online. Pada penelitian, menyatakan bahwa tidak terdapat perbedaa signifikan dalam rasio lulus-gagal yang mengindikasikan bahwa kursus online juga memberikan penilaian secara selektif dan efektif terhadap kelulusan. Temuan menarik lainnya adalah kursus online dapat mengurangi gap prestasi siswa. Spekulasi menyatakan bahwa dengan anonimitas, siswa yang kurang terlayani lebih dapat mencapai potensinya tanpa adanya stereotip [2]. Pada penemuan di penelitian lain, didapatkan bahwa Siswa menyukai video pembelajaran berdurasi pendek untuk menjaga konsentrasi siswa dan dengan memanfaatkan kursus online berbasis video pembelajaran, siswa dapat mengatur kecepatan video sesuai dengan kebutuhan [1]. Dengan kemudahan dan berbagai keuntungan tersebut, pembelajaran online dapat menjadi salah satu alternatif setiap orang untuk mengeksplor pembelajaran yang diinginkan. Namun, prefernsi materi yang ingin dipelajari menjadi hal menarik untuk dibahas agar pengguna dapat memanfaatkan pembelajaran yang diterima secara efektif serta mengkombinasikannya dengan pegetahuan yang dimiliki.    
 
 ## Business Understanding
 
@@ -20,25 +14,22 @@ Bagian laporan ini mencakup:
 
 ### Problem Statements
 
-Menjelaskan pernyataan masalah:
-- Pernyataan Masalah 1
-- Pernyataan Masalah 2
-- Pernyataan Masalah n
+Pernyataan masalah:
+- Kesulitan dalam memilih materi yang akan dipelajari pada kursus online.
+- Kurangnya pengetahuan mengenai kesesuaian materi yang akan diambil dengan preferensi yang dimiliki.
+- Kurangnya referensi dalam mengambil kursus yang sesuai.
 
 ### Goals
 
-Menjelaskan tujuan proyek yang menjawab pernyataan masalah:
-- Jawaban pernyataan masalah 1
-- Jawaban pernyataan masalah 2
-- Jawaban pernyataan masalah n
+Tujuan yang ingin dicapai:
+- Membantu dalam memilih kursus online yang sesuai. 
+- Mengetahui kesesuaian materi yang akan diambil dengan preferensi yang dimiliki.
+- Memberi referensi dalam mengambil kursus yang sesuai
 
-Semua poin di atas harus diuraikan dengan jelas. Anda bebas menuliskan berapa pernyataan masalah dan juga goals yang diinginkan.
+## Soution statement
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Menambahkan bagian “Solution Approach” yang menguraikan cara untuk meraih goals. Bagian ini dibuat dengan ketentuan sebagai berikut: 
+Solusi yang dapat dilakukan:
 
-    ### Solution statements
-    - Mengajukan 2 atau lebih solution approach (algoritma atau pendekatan sistem rekomendasi).
 
 ## Data Understanding
 Paragraf awal bagian ini menjelaskan informasi mengenai jumlah data, kondisi data, dan informasi mengenai data yang digunakan. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
