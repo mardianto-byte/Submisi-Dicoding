@@ -4,7 +4,7 @@
 
 `Education is the most powerful weapon which you can use to change the world - Nelson Mandela`  
   
-  Quote tersebut menyatakan bahwa pendidikan merupakan hal yang penting untuk setiap individu. Dengan pendidikan, setiap individu akan membuka jendela pengetahuan baru yang dimiliki. Dalam pendidikan, tidak setiap orang memiliki kesempatan untuk dapat merasakan pendidikan secara formal untuk mengasah keahlian yang dimiliki. Namun, keterbatasan akses tidak akan menjadi penghalang bagi setiap individu dalam memiliki kebebasan pendidikan. Dalam dunia digital saat ini, pendidikan bisa didapatkan dari berbagai sumber, salah satunya kursus online. Pada penelitian, menyatakan bahwa tidak terdapat perbedaa signifikan dalam rasio lulus-gagal yang mengindikasikan bahwa kursus online juga memberikan penilaian secara selektif dan efektif terhadap kelulusan. Temuan menarik lainnya adalah kursus online dapat mengurangi gap prestasi siswa. Spekulasi menyatakan bahwa dengan anonimitas, siswa yang kurang terlayani lebih dapat mencapai potensinya tanpa adanya stereotip [2]. Pada penemuan di penelitian lain, didapatkan bahwa Siswa menyukai video pembelajaran berdurasi pendek untuk menjaga konsentrasi siswa dan dengan memanfaatkan kursus online berbasis video pembelajaran, siswa dapat mengatur kecepatan video sesuai dengan kebutuhan [1]. Dengan kemudahan dan berbagai keuntungan tersebut, pembelajaran online dapat menjadi salah satu alternatif setiap orang untuk mengeksplor pembelajaran yang diinginkan. Namun, prefernsi materi yang ingin dipelajari menjadi hal menarik untuk dibahas agar pengguna dapat memanfaatkan pembelajaran yang diterima secara efektif serta mengkombinasikannya dengan pegetahuan yang dimiliki.    
+  Kutipan tersebut menyatakan bahwa pendidikan merupakan hal yang penting untuk setiap individu. Dengan pendidikan, setiap individu akan membuka jendela pengetahuan baru yang dimiliki. Dalam pendidikan, tidak setiap orang memiliki kesempatan untuk dapat merasakan pendidikan secara formal untuk mengasah keahlian yang dimiliki. Namun, keterbatasan akses tidak akan menjadi penghalang bagi setiap individu dalam memiliki kebebasan pendidikan. Dalam dunia digital saat ini, pendidikan bisa didapatkan dari berbagai sumber, salah satunya kursus online. Pada penelitian, menyatakan bahwa tidak terdapat perbedaa signifikan dalam rasio lulus-gagal yang mengindikasikan bahwa kursus online juga memberikan penilaian secara selektif dan efektif terhadap kelulusan. Temuan menarik lainnya adalah kursus online dapat mengurangi gap prestasi siswa. Spekulasi menyatakan bahwa dengan anonimitas, siswa yang kurang terlayani lebih dapat mencapai potensinya tanpa adanya stereotip [2]. Pada penemuan di penelitian lain, didapatkan bahwa Siswa menyukai video pembelajaran berdurasi pendek untuk menjaga konsentrasi siswa dan dengan memanfaatkan kursus online berbasis video pembelajaran, siswa dapat mengatur kecepatan video sesuai dengan kebutuhan [1]. Dengan kemudahan dan berbagai keuntungan tersebut, pembelajaran online dapat menjadi salah satu alternatif setiap orang untuk mengeksplor pembelajaran yang diinginkan. Namun, prefernsi materi yang ingin dipelajari menjadi hal menarik untuk dibahas agar pengguna dapat memanfaatkan pembelajaran yang diterima secara efektif serta mengkombinasikannya dengan pegetahuan yang dimiliki.    
 
 ## Business Understanding
 
@@ -37,9 +37,7 @@ Sumber data didapatkan dari [Kaggle](https://www.kaggle.com/datasets/siddharthm1
 
 ### Data Loading
 
-Proses data loading dilakukan untuk membaca isi data pada datase. Proses dilakukan dengan melakukan proses import library yang dibutuhkan untuk melakukan proses loading data seperti pandas. Kemudian, lakukan proses loading dan cek isi dari data
-
-![image](https://user-images.githubusercontent.com/72394753/191901354-5e5d8f48-6b9c-4917-ac68-d3d8ad13b8ce.png)
+Proses data loading dilakukan untuk membaca isi data pada datase. Proses dilakukan dengan melakukan proses import library yang dibutuhkan untuk melakukan proses loading data seperti pandas. Kemudian, lakukan proses loading dan cek isi dari data.
 
 ### Deskripsi Varibel
 
@@ -59,27 +57,21 @@ course_difficulty: tingkat kesulitan kursus
 
 course_students_enrolled: jumlah siswa yang enroll pada kursus
 
-![image](https://user-images.githubusercontent.com/72394753/191901487-be906044-9bf1-4509-a19d-ccfb16eb2a2e.png)
-
 ### Univariate Analysis
-![image](https://user-images.githubusercontent.com/72394753/191901557-3a786e8b-fbb0-440b-9434-46a8249b9bad.png)
-![image](https://user-images.githubusercontent.com/72394753/191901593-f8a32ca2-5a10-4450-894c-3aa7cf3d06c1.png)
-
+Pada Univariate Analysis akan dilakukan proses observasi terhadap banyaknya organisasi penyedia kursus, jenis sertifikat kursus, serta tingkat kesulitan kursus. 
+Didapatkan bahwa terdapat 3 jenis sertifikat kursus yaitu _'specialization'_, _'course'_, dan _'professional certificate'_. Sedangkan untuk tingkat kesulitan terdapat 4 tingkat kesulitan yaitu _'Beginner'_, _'Intermediate'_, _'Mixed'_, _'Advanced'_
 
 ## Data Preparation
 
 ### Handling missing value
 
-Tidak terdapat missing value pada data
-![image](https://user-images.githubusercontent.com/72394753/191901782-7202b3af-846f-4881-8a50-21426898e6b0.png)
+Tidak terdapat missing value pada dataset. Pada implementasi kode, dilakukan dengan menghitung jumlah dari data yang memiliki nilai kosong /_null_. 
 
 ### Reduksi Feature
 
 Proses reduksi feature dilakukan untuk mengurangi jumlah fitur yang digunakan dalam parameter namun tetap mendapatkan sebagian informasi yang dibutuhkan. Dengan demikian, proses training dapat dilakukan lebih cepat dan efisien karena feature yang diproses telah mencakup sebagian besar informasi. Selain itu, hal ini dapat dilakukan untuk menghindari terjadinya kasus overfitting. 
 
 Feature yang akan direduksi meliputi feature yang dianggap kurang memberikan informasi terhadap pilihan pengguna seperti course_code dan course_organization
-
-![image](https://user-images.githubusercontent.com/72394753/191901912-f96d1bd0-eb2a-4110-b55e-2e015c4af499.png)
 
 ### Handling Duplicate
 
@@ -102,39 +94,13 @@ Kekurangan
 
 - Model hanya bisa membuat rekomendasi berdasarkan ketertarikan user dan terbatas dalam melihat ketertarikan user lainnya.
 
-![image](https://user-images.githubusercontent.com/72394753/191902624-865b167f-0ed4-48cb-b5dc-490b84aa8add.png)
 Model yang dibuat akan menampilkan top 5 rekomendasi course yang dapat diambil oleh pengguna berdasarkan keyword yang diberikan. Pada contoh diatas, model akan menerima input berupa Cloud Computing dan sistem akan memberikan rekomendasi course yang berelasi terhadap keyword.  
+
+Pada implementasi kode, akan memanfaatkan TF-IDF Vectorizer yang akan menemukan representasi fitur penting dari data judul kursus.  Kemudian dilakukan proses _fit transformation _ yang menghasilkan matriks (891, 1433) dimana terdapat 891 data kursus yang dikategorikan kedalam 1433 kategori. Lakukan proses perhitungan derajat kesamaan dengan memanfaatkan teknik _cosine similarity_ . Dengan menggunakan teknik tersebut, kita dapat mendekteksi kesamaan antara satu kursus dengan yang lain didasarkan pada judul kursus. Untuk mendapatkan sejumlah rekomendasi, dalam hal ini dipilih 5, jalankan fungsi _course recomendations_. Pada fungsi _course_recomendations_, akan dilakukan 5 data kursus tertinggi berdasarkan tingkat _similarity_ yang akan dijadikan sebagai rekomendasi.
 
 ## Evaluation
 
 Dikarenakan berdasarkan dataset, tidak ditemukan preferensi dari pengguna sehingga kita tidak dapat mengevaluasi secara pasti preferensi dari pengguna itu sendiri. Namun jika dilihat dari hasil yang didapatkan, diketahui bahwa hasil yang ditampilkan berkorelasi cukup baik terhadap keyword yang diberikan sehingga percobaan evaluasi yang dapat dilakukan adalah melakukan labeling terhadap course yang potensial terhadap keyword kemudian lakukan perhitungan terhadap precission dan recall. 
-
-```
-# Source : https://sdsawtelle.github.io/blog/output/mean-average-precision-MAP-for-recommender-systems.html
-import numpy as np 
-
-recoms = np.zeros((891,), dtype=int)
-cloud_course = [17, 18, 31, 64, 109, 121, 142, 143, 144, 193, 194, 222, 223, 224, 254, 284, 285, 336, 391, 392, 433, 480, 573, 627, 665, 723] # course related to cloud material 
-
-for i in cloud_course:
-  recoms[i-2] = 1
-```  
-
-```
-NUM_ACTUAL_ADDED_ACCT = len(cloud_course)
-precs = []
-recalls = []
-
-for indx, rec in enumerate(recoms):
-    precs.append(sum(recoms[:indx+1])/(indx+1))
-    recalls.append(sum(recoms[:indx+1])/NUM_ACTUAL_ADDED_ACCT)
-
-print(precs)
-print(recalls)
-```
-
-![image](https://user-images.githubusercontent.com/72394753/191903373-5571bd8f-038a-4726-9100-155f6983e7ec.png)
-
 
 ## Referensi
 
