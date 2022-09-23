@@ -88,7 +88,6 @@ Tidak terdapat duplikasi data pada dataset
 
 
 ## Modeling
-Tahapan ini membahas mengenai model sisten rekomendasi yang Anda buat untuk menyelesaikan permasalahan. Sajikan top-N recommendation sebagai output.
 
 ### Content Based Filtering
 
@@ -103,18 +102,44 @@ Kekurangan
 
 - Model hanya bisa membuat rekomendasi berdasarkan ketertarikan user dan terbatas dalam melihat ketertarikan user lainnya.
 
-
+![image](https://user-images.githubusercontent.com/72394753/191902624-865b167f-0ed4-48cb-b5dc-490b84aa8add.png)
+Model yang dibuat akan menampilkan top 5 rekomendasi course yang dapat diambil oleh pengguna berdasarkan keyword yang diberikan. Pada contoh diatas, model akan menerima input berupa Cloud Computing dan sistem akan memberikan rekomendasi course yang berelasi terhadap keyword.  
 
 ## Evaluation
-Pada bagian ini Anda perlu menyebutkan metrik evaluasi yang digunakan. Kemudian, jelaskan hasil proyek berdasarkan metrik evaluasi tersebut.
 
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
+Dikarenakan berdasarkan dataset, tidak ditemukan preferensi dari pengguna sehingga kita tidak dapat mengevaluasi secara pasti preferensi dari pengguna itu sendiri. Namun jika dilihat dari hasil yang didapatkan, diketahui bahwa hasil yang ditampilkan berkorelasi cukup baik terhadap keyword yang diberikan sehingga percobaan evaluasi yang dapat dilakukan adalah melakukan labeling terhadap course yang potensial terhadap keyword kemudian lakukan perhitungan terhadap precission dan recall. 
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
+```
+# Source : https://sdsawtelle.github.io/blog/output/mean-average-precision-MAP-for-recommender-systems.html
+import numpy as np 
+
+recoms = np.zeros((891,), dtype=int)
+cloud_course = [17, 18, 31, 64, 109, 121, 142, 143, 144, 193, 194, 222, 223, 224, 254, 284, 285, 336, 391, 392, 433, 480, 573, 627, 665, 723] # course related to cloud material 
+
+for i in cloud_course:
+  recoms[i-2] = 1
+```  
+
+```
+NUM_ACTUAL_ADDED_ACCT = len(cloud_course)
+precs = []
+recalls = []
+
+for indx, rec in enumerate(recoms):
+    precs.append(sum(recoms[:indx+1])/(indx+1))
+    recalls.append(sum(recoms[:indx+1])/NUM_ACTUAL_ADDED_ACCT)
+
+print(precs)
+print(recalls)
+```
+
+![image](https://user-images.githubusercontent.com/72394753/191903373-5571bd8f-038a-4726-9100-155f6983e7ec.png)
+
 
 ## Referensi
 
 [1] N. Mamgain, A. Sharma and P. Goyal, "Learner's perspective on video-viewing features offered by MOOC providers: Coursera and edX," 2014 IEEE International Conference on MOOC, Innovation and Technology in Education (MITE), 2014, pp. 331-336, doi: 10.1109/MITE.2014.7020298.
 
 [2] F. Zabihian, "Achievement gap in online and hybrid courses versus face-to-face courses among engineering and computer science students," 2018 IEEE Frontiers in Education Conference (FIE), 2018, pp. 1-5, doi: 10.1109/FIE.2018.8658579.
+
+[3] https://sdsawtelle.github.io/blog/output/mean-average-precision-MAP-for-recommender-systems.html
