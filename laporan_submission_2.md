@@ -100,7 +100,11 @@ Pada implementasi kode, akan memanfaatkan TF-IDF Vectorizer yang akan menemukan 
 
 ## Evaluation
 
-Dikarenakan berdasarkan dataset, tidak ditemukan preferensi dari pengguna sehingga kita tidak dapat mengevaluasi secara pasti preferensi dari pengguna itu sendiri. Namun jika dilihat dari hasil yang didapatkan, diketahui bahwa hasil yang ditampilkan berkorelasi cukup baik terhadap keyword yang diberikan sehingga percobaan evaluasi yang dapat dilakukan adalah melakukan labeling terhadap course yang potensial terhadap keyword kemudian lakukan perhitungan terhadap precission dan recall. 
+Dikarenakan berdasarkan dataset, tidak ditemukan preferensi dari pengguna sehingga kita tidak dapat mengevaluasi secara pasti preferensi dari pengguna itu sendiri. 
+
+Namun jika dilihat dari hasil yang didapatkan, diketahui bahwa hasil yang ditampilkan berkorelasi cukup baik terhadap keyword yang diberikan sehingga percobaan evaluasi yang dapat dilakukan adalah melakukan filter terhadap dataset untuk menemukan kursus yang memiliki materi tertentu serta melakukan presiksi, apakah hasil prediksi terdapat pada list filter dengan memanfaatkan _Precision_. 
+
+Pada contoh evaluasi, kita memisalkan pengguna yang akan mencari rekomendasi kelas _Data science_, pada hasil yang diberikan terdapat 24 daftar kelas Data science yang tersedia. Saat dilakukan proses rekomendasi, 4 hasil yang diberikan sesuai karena memberikan gambaran materi yang dipelajari adalah _data science_ namun juga terdapat 1 rekomendasi kelas _Geonomic Data Science_ yang dirasa bisa kurang relevan dikarenakan tingkat kesulitan kursus (_intermediate_) yang menyebabkan materi yang disampaikan telah terspesialisasi (biologi gen). Meskipun demikian, dapat dikatakan bahwa metric precision yang iberikan tinggi.  
 
 ## Referensi
 
